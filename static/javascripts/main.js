@@ -96,80 +96,144 @@ document.addEventListener('DOMContentLoaded', function() {
     const nameInput = document.getElementById('name');
     const addressInput = document.getElementById('address');
     const generateBtn = document.getElementById('generate-btn');
-    
-    function validateForm() {
-      const query = queryInput.value.trim();
-      const name = nameInput.value.trim();
-      const address = addressInput.value.trim();
-      
-      if (query && name && address) {
-        generateBtn.disabled = false;
-      } else {
-        generateBtn.disabled = true;
-      }
-    }
-    
-    nameInput.addEventListener('input', validateForm);
-    addressInput.addEventListener('input', validateForm);
-    queryInput.addEventListener('input', validateForm);
-    
-    // Form submission
     const rtiForm = document.getElementById('rti-form');
     const rtiPreviewModal = document.getElementById('rti-preview-modal');
     const rtiContent = document.getElementById('rti-content');
-    
-    rtiForm.addEventListener('submit', async function(event) {
-      event.preventDefault();
-      
-      const query = queryInput.value.trim();
-      const name = nameInput.value.trim();
-      const address = addressInput.value.trim();
-      
-      if (query && name && address) {
-        // Show loading state
-        generateBtn.disabled = true;
-        generateBtn.innerHTML = `
-          <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
-          </svg>
-          Generating...
-        `;
+    let loadingIndicator;
+    let recommendedDeptDiv;
+
+    // Create recommended department div
+    function createRecommendedDeptSection() {
+        if (!recommendedDeptDiv) {
+            recommendedDeptDiv = document.createElement('div');
+            recommendedDeptDiv.className = 'recommended-department';
+            recommendedDeptDiv.style.marginTop = '20px';
+            recommendedDeptDiv.style.padding = '15px';
+            recommendedDeptDiv.style.borderRadius = '8px';
+            recommendedDeptDiv.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            recommendedDeptDiv.style.display = 'none';
+            rtiForm.appendChild(recommendedDeptDiv);
+        }
+    }
+
+    // Create loading indicator
+    function createLoadingIndicator() {
+        loadingIndicator = document.createElement('div');
+        loadingIndicator.className = 'loading-indicator';
+        loadingIndicator.textContent = 'Generating RTI Application...';
+        loadingIndicator.style.display = 'none';
+        rtiForm.appendChild(loadingIndicator);
+    }
+
+    createLoadingIndicator();
+    createRecommendedDeptSection();
+
+    function validateForm() {
+        const query = queryInput.value.trim();
+        const name = nameInput.value.trim();
+        const address = addressInput.value.trim();
+        
+        if (query && name && address) {
+            generateBtn.disabled = false;
+        } else {
+            generateBtn.disabled = true;
+        }
+    }
+
+    nameInput.addEventListener('input', validateForm);
+    addressInput.addEventListener('input', validateForm);
+    queryInput.addEventListener('input', validateForm);
+
+    // Form submission
+    rtiForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const query = queryInput.value.trim();
+        const name = nameInput.value.trim();
+        const address = addressInput.value.trim();
+
+        if (!query || !name || !address) {
+            showError('Please fill in all fields');
+            return;
+        }
 
         try {
-          console.log('Starting RTI generation for query:', query);
-          // Generate enhanced RTI letter
-          const generatedRti = await window.rtiGeneration.generateEnhancedRTILetter(
-            query,
-            name,
-            address
-          );
-          
-          // Update modal content
-          rtiContent.textContent = generatedRti;
-          rtiPreviewModal.classList.add('active');
-          console.log('Successfully generated RTI');
+            // Show loading state
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = `
+                <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                </svg>
+                Generating...
+            `;
+            loadingIndicator.style.display = 'block';
+            recommendedDeptDiv.style.display = 'none';
+            
+            // Clear any previous errors
+            clearError();
+
+            console.log('Starting RTI generation for query:', query);
+            
+            // Generate the RTI letter
+            const rtiLetter = await window.rtiGeneration.generateEnhancedRTILetter(query, name, address);
+            
+            // Get the department info from the last API call
+            const deptInfo = await window.rtiGeneration.getLastPredictedDepartment();
+            
+            // Show the recommended department
+            if (deptInfo) {
+                recommendedDeptDiv.innerHTML = `
+                    <h3 style="color: #66B2FF; margin: 0 0 10px 0;">Recommended Department</h3>
+                    <div style="color: #FFFFFF;">
+                        <p style="font-weight: bold; margin: 0 0 5px 0;">${deptInfo.name}</p>
+                        <p style="font-size: 0.9em; margin: 0; opacity: 0.8;">${deptInfo.description}</p>
+                    </div>
+                `;
+                recommendedDeptDiv.style.display = 'block';
+            }
+
+            // Update modal content and show it
+            rtiContent.textContent = rtiLetter;
+            rtiPreviewModal.classList.add('active');
+            console.log('Successfully generated RTI');
         } catch (error) {
-          console.error('Detailed error in form submission:', error);
-          let errorMessage = error.message;
-          if (errorMessage.includes('API key')) {
-            errorMessage = 'System configuration error. Please contact support.';
-          } else if (errorMessage.includes('parse')) {
-            errorMessage = 'Error processing the response. Please try a different query.';
-          }
-          showToast(errorMessage, 'error');
+            console.error('Detailed error in form submission:', error);
+            showError(error.message);
         } finally {
-          // Reset button state
-          generateBtn.disabled = false;
-          generateBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m22 2-7 20-4-9-9-4Z"/>
-              <path d="M22 2 11 13"/>
-            </svg>
-            Generate RTI Application
-          `;
+            // Reset button state
+            generateBtn.disabled = false;
+            generateBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m22 2-7 20-4-9-9-4Z"/>
+                    <path d="M22 2 11 13"/>
+                </svg>
+                Generate RTI Application
+            `;
+            loadingIndicator.style.display = 'none';
         }
-      }
     });
+
+    function showError(message) {
+        const errorDiv = document.querySelector('.error-message') || document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.style.backgroundColor = '#ff4444';
+        errorDiv.style.color = 'white';
+        errorDiv.style.padding = '10px';
+        errorDiv.style.borderRadius = '5px';
+        errorDiv.style.marginTop = '10px';
+        errorDiv.textContent = message;
+        
+        if (!document.querySelector('.error-message')) {
+            rtiForm.appendChild(errorDiv);
+        }
+    }
+
+    function clearError() {
+        const errorDiv = document.querySelector('.error-message');
+        if (errorDiv) {
+            errorDiv.remove();
+        }
+    }
     
     // Modal actions
     const closeModalBtn = document.getElementById('close-modal-btn');
