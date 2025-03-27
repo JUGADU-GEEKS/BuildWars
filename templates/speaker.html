@@ -46,15 +46,18 @@
 <body>
     <div class="container">
         <h2>Speak Your Query</h2>
-        <textarea id="queryBox" placeholder="Your spoken query will appear here..."></textarea>
-        <button class="mic-btn" onclick="startSpeechRecognition()">🎤 Speak</button>
+        <form action="/speak" method="POST">
+            <textarea id="queryBox" placeholder="Your spoken query will appear here..." name="query"></textarea>
+            
+            <button class="mic-btn " type="submit" >Submit</button>
+        </form>
+            <button class="mic-btn" onclick="startSpeechRecognition()">🎤 Speak</button>
     </div>
 
     <script>
         function startSpeechRecognition() {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'hi-IN'; // Listen in Hindi
-    recognition.continuous = true; // Keep listening for longer sentences
     recognition.interimResults = true; // Show partial results while speaking
 
     let finalTranscript = '';
@@ -71,9 +74,9 @@
         document.getElementById('queryBox').value = finalTranscript + interimTranscript;
     };
 
-    recognition.onerror = function(event) {
-        alert('Error occurred: ' + event.error);
-    };
+    // recognition.onerror = function(event) {
+    //     alert('Error occurred: ' + event.error);
+    // };
 
     recognition.onend = function() {
         translateToEnglish(finalTranscript.trim()); // Translate once speech ends

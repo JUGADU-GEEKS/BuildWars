@@ -1,269 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RTI Query Magic</title>
-    <meta name="description" content="Transform your queries into RTI applications" />
-    <meta name="author" content="RTI Query" />
 
-    <meta property="og:title" content="RTI Query Magic" />
-    <meta property="og:description" content="Transform your queries into RTI applications" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RTI Query Magic</title>
+  <meta name="description" content="Transform your queries into RTI applications" />
+  <meta name="author" content="RTI Query" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@rti_query" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="/static/stylesheets/home.css">
-  </head>
+  <meta property="og:title" content="RTI Query Magic" />
+  <meta property="og:description" content="Transform your queries into RTI applications" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-  <body>
-    <div id="root">
-      <!-- Navbar -->
-      <nav class="navbar">
-        <div class="container">
-          <div class="logo">
-            <div class="logo-circle">
-              <span>R</span>
-            </div>
-            <h1>RTI <span class="text-gradient">Query</span></h1>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@rti_query" />
+  <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/static/stylesheets/home.css">
+</head>
+
+<body>
+  <div id="root">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <div class="logo-circle">
+            <span>R</span>
           </div>
-
-          <div class="nav-links">
-            <button class="nav-btn">About</button>
-            <button class="nav-btn">Examples</button>
-            <button class="nav-btn">Contact</button>
-            <button class="lang-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-              <span>English</span>
-            </button>
-          </div>
+          <h1>RTI <span class="text-gradient">Query</span></h1>
         </div>
-      </nav>
 
-      <!-- Hero Section -->
-      <section class="hero">
-        <div class="hero-bg">
-          <div class="blob blob-1"></div>
-          <div class="blob blob-2"></div>
-          <div class="blob blob-3"></div>
+        <div class="nav-links">
+          <button class="nav-btn">About</button>
+          <button class="nav-btn">Examples</button>
+          <button class="nav-btn">Contact</button>
+          <button class="lang-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-languages">
+              <path d="m5 8 6 6" />
+              <path d="m4 14 6-6 2-3" />
+              <path d="M2 5h12" />
+              <path d="M7 2h1" />
+              <path d="m22 22-5-10-5 10" />
+              <path d="M14 18h6" />
+            </svg>
+            <span>English</span>
+          </button>
         </div>
-        
-        <div class="container">
-          <div class="tag">Simplifying Right to Information</div>
-          
-          <h1 class="hero-title">
-            <span class="heading-gradient">RTI Made Simple</span>
-          </h1>
-          
-          <p class="hero-subtitle">
-            Transform your everyday concerns into formally structured RTI applications
-            with advanced AI assistance. No legal expertise required.
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+      </div>
+
+      <div class="container">
+        <div class="tag">Simplifying Right to Information</div>
+
+        <h1 class="hero-title">
+          <span class="heading-gradient">RTI Made Simple</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Transform your everyday concerns into formally structured RTI applications
+          with advanced AI assistance. No legal expertise required.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn-primary" id="get-started-btn">Get Started</button>
+          <button class="btn-secondary">View Examples</button>
+        </div>
+
+        <div class="scroll-indicator" id="scroll-down">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-down">
+            <path d="M12 5v14" />
+            <path d="m19 12-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Query Form Section -->
+    <section class="query-form" id="query-form">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="text-gradient">Create Your RTI Query</h2>
+          <p>
+            Describe your concern in simple language, and we'll transform it into a
+            properly formatted RTI application addressed to the right department.
           </p>
-          
-          <div class="hero-buttons">
-            <button class="btn-primary" id="get-started-btn">Get Started</button>
-            <button class="btn-secondary">View Examples</button>
-          </div>
-
-          <div class="scroll-indicator" id="scroll-down">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
-          </div>
         </div>
-      </section>
 
-      <!-- Query Form Section -->
-      <section class="query-form" id="query-form">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="text-gradient">Create Your RTI Query</h2>
-            <p>
-              Describe your concern in simple language, and we'll transform it into a
-              properly formatted RTI application addressed to the right department.
-            </p>
-          </div>
+        <div class="glass-card">
+          <form id="rti-form">
+            <div class="form-group">
+              <label for="query">Describe your query or concern in everyday language</label>
+              <div class="textarea-container">
+                <textarea id="query" name="query"
+                  placeholder="I want to know why the construction of the road in my area has been delayed for 6 months..."
+                  required>{{ query if query else '' }}
+                </textarea>
 
-          <div class="glass-card">
-            <form id="rti-form">
+                <div class="help-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-help-circle">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                    <path d="M12 17h.01" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
               <div class="form-group">
-                <label for="query">Describe your query or concern in everyday language</label>
-                <div class="textarea-container">
-                  <textarea 
-                    id="query" 
-                    placeholder="I want to know why the construction of the road in my area has been delayed for 6 months..."
-                    required
-                  ></textarea>
-                  <div class="help-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-help-circle"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-                  </div>
-                </div>
+                <label for="name">Your Full Name</label>
+                <input type="text" id="name" placeholder="John Doe" required>
               </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name">Your Full Name</label>
-                  <input type="text" id="name" placeholder="John Doe" required>
-                </div>
-                <div class="form-group">
-                  <label for="address">Your Address</label>
-                  <input type="text" id="address" placeholder="123 Main St, City, State" required>
-                </div>
+              <div class="form-group">
+                <label for="address">Your Address</label>
+                <input type="text" id="address" placeholder="123 Main St, City, State" required>
               </div>
+            </div>
+            <a href="/speak" id="speak-hindi">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mic">
+                <path d="M12 1v10" />
+                <rect x="9" y="1" width="6" height="10" rx="3" />
+                <path d="M5 10a7 7 0 0 0 14 0" />
+                <path d="M8 21h8" />
+                <path d="M12 17v4" />
+              </svg>
+              Speak Query in Hindi
+            </a>
 
-              <button type="submit" id="generate-btn" class="btn-primary btn-full" disabled>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+
+            <button type="submit" id="generate-btn" class="btn-primary btn-full" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-send">
+                <path d="m22 2-7 20-4-9-9-4Z" />
+                <path d="M22 2 11 13" />
+              </svg>
+              Generate RTI Application
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="query-form" id="query-form">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="text-gradient">You Need To Report At</h2>
+          <p>
+            Describe your concern in simple language, and we'll tell you where do you need to head at:
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <form id="rti-form" action="/predict" method="POST">
+            <div class="form-group">
+              <label for="query">Describe your query or concern in everyday language</label>
+              <div class="textarea-container">
+                <input id="query"
+                  placeholder="I want to know why the construction of the road in my area has been delayed for 6 months..."
+                  required name="query">
+                </input>
+              </div>
+              <button type="submit" id="generate-btn" class="btn-primary btn-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-send">
+                  <path d="m22 2-7 20-4-9-9-4Z" />
+                  <path d="M22 2 11 13" />
+                </svg>
                 Generate RTI Application
               </button>
-            </form>
-          </div>
+              <h3>{{ department }}</h3>
+            </div>
+          </form>
         </div>
-      </section>
 
-      <section class="query-form" id="query-form">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="text-gradient">You Need To Report At</h2>
-            <p>
-              Describe your concern in simple language, and we'll tell you where do you need to head at:
-            </p>
-          </div>
 
-          <div class="glass-card">
-            <form id="rti-form" action="/predict" method="POST">
-              <div class="form-group">
-                <label for="query">Describe your query or concern in everyday language</label>
-                <div class="textarea-container">
-                  <input 
-                    id="query" 
-                    placeholder="I want to know why the construction of the road in my area has been delayed for 6 months..."
-                    required name="query"
-                  >
-                  </input>
-                </div>
-                <button type="submit" id="generate-btn" class="btn-primary btn-full" >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                  Generate RTI Application
-                </button>
-                <h3>{{ department }}</h3>
-              </div>
-            </form>
-          </div>
 
-      
-
-      <!-- Examples Section -->
-      <section class="examples">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="text-gradient">Example RTI Queries</h2>
-            <p>
-              Browse through these common RTI applications by category to understand 
-              how to structure your own query effectively.
-            </p>
-          </div>
-          
-          <div class="example-categories" id="example-categories">
-            <!-- Example categories will be added dynamically by JavaScript -->
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-about">
-              <div class="logo">
-                <div class="logo-circle small">
-                  <span>R</span>
-                </div>
-                <h2>RTI <span class="text-gradient">Query</span></h2>
-              </div>
+        <!-- Examples Section -->
+        <section class="examples">
+          <div class="container">
+            <div class="section-header">
+              <h2 class="text-gradient">Example RTI Queries</h2>
               <p>
-                Simplifying the RTI process for every citizen through technology.
+                Browse through these common RTI applications by category to understand
+                how to structure your own query effectively.
               </p>
             </div>
-            
-            <div class="footer-links">
-              <h3>Resources</h3>
-              <ul>
-                <li><a href="#">RTI Act Guide</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Department List</a></li>
-                <li><a href="#">Success Stories</a></li>
-              </ul>
-            </div>
-            
-            <div class="footer-links">
-              <h3>Company</h3>
-              <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Team</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-              </ul>
-            </div>
-            
-            <div class="footer-links">
-              <h3>Contact</h3>
-              <ul>
-                <li>info@rtiquery.com</li>
-                <li>+91 1234567890</li>
-                <li>Connect with us on social media</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="footer-bottom">
-            <p>© <span id="current-year"></span> RTI Query. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
 
-      <!-- RTI Preview Modal -->
-      <div class="modal" id="rti-preview-modal">
-        <div class="modal-content glass-card">
-          <div class="modal-header">
-            <h2>Your RTI Application</h2>
-            <div class="modal-actions">
-              <button id="copy-btn" class="btn-outline">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                Copy
-              </button>
-              <button id="download-btn" class="btn-outline">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                Download
-              </button>
-              <button id="close-modal-btn" class="btn-primary">Close</button>
+            <div class="example-categories" id="example-categories">
+              <!-- Example categories will be added dynamically by JavaScript -->
             </div>
           </div>
-          
-          <div class="modal-body">
-            <pre id="rti-content"></pre>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="container">
+            <div class="footer-grid">
+              <div class="footer-about">
+                <div class="logo">
+                  <div class="logo-circle small">
+                    <span>R</span>
+                  </div>
+                  <h2>RTI <span class="text-gradient">Query</span></h2>
+                </div>
+                <p>
+                  Simplifying the RTI process for every citizen through technology.
+                </p>
+              </div>
+
+              <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                  <li><a href="#">RTI Act Guide</a></li>
+                  <li><a href="#">FAQ</a></li>
+                  <li><a href="#">Department List</a></li>
+                  <li><a href="#">Success Stories</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Team</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-links">
+                <h3>Contact</h3>
+                <ul>
+                  <li>info@rtiquery.com</li>
+                  <li>+91 1234567890</li>
+                  <li>Connect with us on social media</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+              <p>© <span id="current-year"></span> RTI Query. All rights reserved.</p>
+            </div>
           </div>
-          
-          <div class="modal-footer">
-            <p>
-              Note: This RTI application is generated based on your input. Please review
-              it carefully before submission. You may need to add the application fee
-              as per the department's guidelines.
-            </p>
+        </footer>
+
+        <!-- RTI Preview Modal -->
+        <div class="modal" id="rti-preview-modal">
+          <div class="modal-content glass-card">
+            <div class="modal-header">
+              <h2>Your RTI Application</h2>
+              <div class="modal-actions">
+                <button id="copy-btn" class="btn-outline">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-copy">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                  </svg>
+                  Copy
+                </button>
+                <button id="download-btn" class="btn-outline">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-download">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" x2="12" y1="15" y2="3" />
+                  </svg>
+                  Download
+                </button>
+                <button id="close-modal-btn" class="btn-primary">Close</button>
+              </div>
+            </div>
+
+            <div class="modal-body">
+              <pre id="rti-content"></pre>
+            </div>
+
+            <div class="modal-footer">
+              <p>
+                Note: This RTI application is generated based on your input. Please review
+                it carefully before submission. You may need to add the application fee
+                as per the department's guidelines.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script src="/static/javascripts/rtiUtils.js"></script>
-    <script src="/static/javascripts/rtiGeneration.js"></script>
-    <script src="/static/javascripts/main.js"></script>
-    <script src="/static/javascripts/dep.js"></script>
-  </body>
+      <!-- JavaScript -->
+      <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+      <script src="/static/javascripts/rtiUtils.js"></script>
+      <script src="/static/javascripts/rtiGeneration.js"></script>
+      <script src="/static/javascripts/main.js"></script>
+      <script src="/static/javascripts/dep.js"></script>
+</body>
+
 </html>

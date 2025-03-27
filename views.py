@@ -27,4 +27,12 @@ def predict():
         return render_template('home.html', department=department)
     return render_template('home.html', department='write your query...')
 
+@views.route('/speak', methods=['POST','GET'])
+def speak():
+    if request.method=='POST':
+        query = request.form.get('query')
+        if(query):
+            return render_template('home.html', query=query)
+    return render_template('speaker.html')
+
 
