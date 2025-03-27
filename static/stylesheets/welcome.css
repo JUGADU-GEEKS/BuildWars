@@ -24,6 +24,8 @@ html, body {
     height: 100%;
     font-family: var(--font-sans);
     background-color: var(--background);
+    background-image: radial-gradient(circle at 10% 20%, rgba(21, 28, 48, 1) 0%, rgba(12, 15, 33, 1) 90%);
+
     color: var(--text-primary);
 }
 

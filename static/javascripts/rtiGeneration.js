@@ -26,6 +26,8 @@ async function getGeminiKey() {
     }
 }
 
+let lastPredictedDepartment = null;
+
 // Function to predict department using Gemini API
 async function predictDepartment(query) {
     try {
@@ -148,6 +150,10 @@ Return ONLY the JSON object, no other text.`
                 console.error('Invalid department info format:', departmentInfo);
                 throw new Error('Invalid department info format');
             }
+            
+            // Store the department info
+            lastPredictedDepartment = departmentInfo;
+            
             return departmentInfo;
         } catch (parseError) {
             console.error('Error parsing department info:', parseError);
@@ -164,6 +170,11 @@ Return ONLY the JSON object, no other text.`
             throw new Error('Failed to predict appropriate department. Please try again. Error: ' + error.message);
         }
     }
+}
+
+// Function to get the last predicted department
+function getLastPredictedDepartment() {
+    return lastPredictedDepartment;
 }
 
 // Function to enhance RTI query using Gemini API
@@ -282,5 +293,6 @@ ${name}`;
 
 // Export the functions
 window.rtiGeneration = {
-    generateEnhancedRTILetter
+    generateEnhancedRTILetter,
+    getLastPredictedDepartment
 }; 
