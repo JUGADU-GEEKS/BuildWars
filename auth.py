@@ -25,19 +25,13 @@ def signup():
     if request.method=='POST':
         data = {
             "full_name": request.form.get('full_name'),
-            "enrollment": request.form.get('enrollment'),
             "email": request.form.get('email'),
             "contact": request.form.get('contact'),
-            "college": request.form.get('college'),
-            "course": request.form.get('course'),
-            "branch": request.form.get('branch'),
-            "section": request.form.get('section'),
-            "password": request.form.get('password'),
+            "password": request.form.get('password')
         }
 
         # Validations
         email = data['email']
-        enrollment = data['enrollment']
         contact = data['contact']
         password = data['password']
         confirm_password = request.form.get('confirm-password')
@@ -47,10 +41,6 @@ def signup():
             return redirect('/login')
         if not email.endswith(('@gmail.com', '@outlook.com')):
             return render_template('signup.html', error='Only Gmail or Outlook emails are allowed.')
-
-        if not (enrollment.isdigit() and len(enrollment) == 11):
-            return render_template('signup.html', error='Enrollment number must be exactly 10 digits.')
-
         if not (contact.isdigit() and len(contact) == 10):
             return render_template('signup.html', error='Contact number must be exactly 10 digits.')
         
