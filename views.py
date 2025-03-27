@@ -1,5 +1,7 @@
-from flask import Flask, Blueprint, render_template, request, session
+from flask import Flask, Blueprint, render_template, request, session, jsonify
 from model import User
+from prediction import predict_department
+
 
 views = Blueprint('views', __name__)
 
@@ -16,3 +18,13 @@ def test():
 @views.route('/home')
 def home():
     return render_template('home.html')
+
+@views.route('/predict', methods=['POST','GET'])
+def predict():
+    if request.method=='POST':
+        query = request.form.get('query')
+        department = predict_department("Delhi", query)
+        return render_template('home.html', department=department)
+    return render_template('home.html', department='write your query...')
+
+

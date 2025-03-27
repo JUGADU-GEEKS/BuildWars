@@ -105,10 +105,6 @@
                 </div>
               </div>
 
-              <div class="department-selector" id="department-container">
-                <!-- Departments will be added dynamically by JavaScript -->
-              </div>
-
               <div class="form-row">
                 <div class="form-group">
                   <label for="name">Your Full Name</label>
@@ -128,6 +124,38 @@
           </div>
         </div>
       </section>
+
+      <section class="query-form" id="query-form">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="text-gradient">You Need To Report At</h2>
+            <p>
+              Describe your concern in simple language, and we'll tell you where do you need to head at:
+            </p>
+          </div>
+
+          <div class="glass-card">
+            <form id="rti-form" action="/predict" method="POST">
+              <div class="form-group">
+                <label for="query">Describe your query or concern in everyday language</label>
+                <div class="textarea-container">
+                  <input 
+                    id="query" 
+                    placeholder="I want to know why the construction of the road in my area has been delayed for 6 months..."
+                    required name="query"
+                  >
+                  </input>
+                </div>
+                <button type="submit" id="generate-btn" class="btn-primary btn-full" >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                  Generate RTI Application
+                </button>
+                <h3>{{ department }}</h3>
+              </div>
+            </form>
+          </div>
+
+      
 
       <!-- Examples Section -->
       <section class="examples">
@@ -235,5 +263,6 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script src="/static/javascripts/rtiUtils.js"></script>
     <script src="/static/javascripts/main.js"></script>
+    <script src="/static/javascripts/dep.js"></script>
   </body>
 </html>
