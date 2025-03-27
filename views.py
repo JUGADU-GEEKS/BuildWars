@@ -13,3 +13,6 @@ def test():
     email = user_new.get('email')
     user = User.get_data(email)
     return render_template('test.html', user=user)
+@views.route('/home')
+def home():
+    return render_template('home.html')
