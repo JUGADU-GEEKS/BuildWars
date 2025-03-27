@@ -116,7 +116,7 @@ def verifyotp():
                     'email': user['email'],
                     'contact': user['contact']
                 }
-            return redirect(url_for('views.test'))
+            return redirect(url_for('views.home'))
         else:
             return "invalid otp entered."
     return render_template('verifyOTP.html', message=message)
