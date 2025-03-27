@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const name = nameInput.value.trim();
       const address = addressInput.value.trim();
       
-      if (query && selectedDepartment && name && address) {
+      if (query && name && address) {
         generateBtn.disabled = false;
       } else {
         generateBtn.disabled = true;
@@ -111,23 +111,63 @@ document.addEventListener('DOMContentLoaded', function() {
     
     nameInput.addEventListener('input', validateForm);
     addressInput.addEventListener('input', validateForm);
+    queryInput.addEventListener('input', validateForm);
     
     // Form submission
     const rtiForm = document.getElementById('rti-form');
     const rtiPreviewModal = document.getElementById('rti-preview-modal');
     const rtiContent = document.getElementById('rti-content');
     
-    rtiForm.addEventListener('submit', function(event) {
+    rtiForm.addEventListener('submit', async function(event) {
       event.preventDefault();
       
       const query = queryInput.value.trim();
       const name = nameInput.value.trim();
       const address = addressInput.value.trim();
       
-      if (query && selectedDepartment && name && address) {
-        const generatedRti = generateRtiLetter(query, selectedDepartment, name, address);
-        rtiContent.textContent = generatedRti;
-        rtiPreviewModal.classList.add('active');
+      if (query && name && address) {
+        // Show loading state
+        generateBtn.disabled = true;
+        generateBtn.innerHTML = `
+          <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+          </svg>
+          Generating...
+        `;
+
+        try {
+          console.log('Starting RTI generation for query:', query);
+          // Generate enhanced RTI letter
+          const generatedRti = await window.rtiGeneration.generateEnhancedRTILetter(
+            query,
+            name,
+            address
+          );
+          
+          // Update modal content
+          rtiContent.textContent = generatedRti;
+          rtiPreviewModal.classList.add('active');
+          console.log('Successfully generated RTI');
+        } catch (error) {
+          console.error('Detailed error in form submission:', error);
+          let errorMessage = error.message;
+          if (errorMessage.includes('API key')) {
+            errorMessage = 'System configuration error. Please contact support.';
+          } else if (errorMessage.includes('parse')) {
+            errorMessage = 'Error processing the response. Please try a different query.';
+          }
+          showToast(errorMessage, 'error');
+        } finally {
+          // Reset button state
+          generateBtn.disabled = false;
+          generateBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 2-7 20-4-9-9-4Z"/>
+              <path d="M22 2 11 13"/>
+            </svg>
+            Generate RTI Application
+          `;
+        }
       }
     });
     

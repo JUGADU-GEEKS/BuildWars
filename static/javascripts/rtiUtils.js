@@ -1,5 +1,11 @@
 const departments = [
     {
+      id: "environment",
+      name: "Ministry of Environment, Forest and Climate Change",
+      category: "Environment",
+      description: "Handles environmental protection, forest conservation, and climate change matters.",
+    },
+    {
       id: "education",
       name: "Ministry of Education",
       category: "Education",
@@ -39,6 +45,13 @@ const departments = [
   
   // RTI Examples
   const rtiExamples = [
+    {
+      id: "env1",
+      title: "Tree Cutting Concerns",
+      category: "Environment",
+      content: "I would like to know the number of trees cut in my area in the last 6 months and whether proper permissions were obtained for the same.",
+      department: "Ministry of Environment, Forest and Climate Change",
+    },
     {
       id: "edu1",
       title: "School Infrastructure Funding",
@@ -86,6 +99,7 @@ const departments = [
   // Function to suggest departments based on query content
   function suggestDepartment(query) {
     const keywords = {
+      environment: ["tree", "forest", "environment", "pollution", "climate", "wildlife", "green", "ecology", "cutting", "environmental"],
       education: ["school", "education", "student", "teacher", "university", "college", "admission", "curriculum"],
       health: ["hospital", "health", "medical", "doctor", "nurse", "patient", "disease", "vaccine", "medicine"],
       transport: ["road", "transport", "highway", "vehicle", "traffic", "license", "permit", "bus", "train"],
