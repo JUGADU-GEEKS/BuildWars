@@ -86,7 +86,7 @@ def login():
             user_NonVerified = users_collection.find_one({"email":email, "isVerified": False})
             if(user_NonVerified):
                 return redirect(url_for("auth.resendotp"))
-            return redirect(url_for('views.test'))
+            return redirect(url_for('views.home'))
         else:
             return render_template('login.html', error='Invalid email or password.')
 
